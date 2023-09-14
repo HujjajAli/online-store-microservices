@@ -1,4 +1,5 @@
 import { Component ,Renderer2} from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,20 +8,10 @@ import { Component ,Renderer2} from '@angular/core';
 })
 export class NavigationBarComponent {
 
-  constructor(private renderer: Renderer2){}
+  
 
- /* public OnMenuItemClick(e:any){
-    console.log('Event Work');
-
-    //const productElement = this.renderer.selectRootElement('#products');
-    //const aboutElement = this.renderer.selectRootElement('#about');
-    //const contactElement = this.renderer.selectRootElement('#contact');
+  constructor(){}
 
 
-
-
-    //const element = this.renderer.selectRootElement('#about');
-    //this.renderer.addClass(aboutElement, 'active');
-  }*/
 
 }
