@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { MyProductsComponent } from './components/my-products/my-products.component';
+import { CategoryProductsComponent } from './components/category-products/category-products.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
     path:'my-products',
     component:MyProductsComponent,
     data:{title:'My Products'}
+  },
+  {
+    path:'category-products',
+    component:CategoryProductsComponent
+
   }
 ];
 

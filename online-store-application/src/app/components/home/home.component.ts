@@ -14,13 +14,9 @@ export class HomeComponent {
 
   ngOnInit() {
     this.productService.getAllCategories().subscribe(response=>{
-      if(response.responcode == 0){
-        if(response.data){
-          for(let category of response.data){
-            this.categories = response.data;
-          }
-        }
-      }else{
+      if (response.responcode == 0) {
+        this.categories = response.data;
+      } else {
         console.log('No Category Found');
       }
     });
