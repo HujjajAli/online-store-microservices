@@ -15,4 +15,8 @@ export class ProductService {
   public getAllCategoriesWithActiveClass(categoryId:any){
     return this.httpService.get('http://localhost:8082/category/activeClass/'+categoryId)
   }
+
+  public getAllProducts(){
+    return this.httpService.get('http://localhost:8082/product')
+  }
 }

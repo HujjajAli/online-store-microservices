@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class HomeComponent {
 
    categories: any[] = [];
+   products: any[] = [];
 
   constructor(private productService:ProductService){}
 
@@ -20,6 +21,16 @@ export class HomeComponent {
         console.log('No Category Found');
       }
     });
+
+    this.productService.getAllProducts().subscribe(response=>{
+      if (response.responcode == 0) {
+        this.products = response.data;
+      } else {
+        console.log('No Category Found');
+      }
+    });
+    
+
   }
 
 }

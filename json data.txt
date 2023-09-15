@@ -1,0 +1,8 @@
+{
+  "productName": "Samsung Galaxy Note 10",
+  "productDescription": "This smartphone comes with 8GB of RAM Memory and Upto 256GB internal storage. The phone operates on Android 9 (Pie) OS and powered by Exynos 9825. The hand-set contains triple camera setup on back along with 10MP selfie-shooter. This smartphone is equipped with 3500mAh battery capacity and also supports Fast battery and wireless charging.",
+  "unitPrice": 169999,
+  "quantity": 20,
+  "isActive": true,
+  "purchases": 0
+}

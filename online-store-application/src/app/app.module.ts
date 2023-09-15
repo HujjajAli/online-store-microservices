@@ -11,6 +11,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { MyProductsComponent } from './components/my-products/my-products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryProductsComponent } from './components/category-products/category-products.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CategoryProductsComponent } from './components/category-products/catego
     ContactUsComponent,
     AboutUsComponent,
     MyProductsComponent,
-    CategoryProductsComponent
+    CategoryProductsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

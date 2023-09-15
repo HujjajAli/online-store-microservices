@@ -11,6 +11,7 @@ export class CategoryProductsComponent {
 
   categories: any[] = [];
   categoryName: string|undefined;
+  products: any[] = [];
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
 
@@ -27,6 +28,14 @@ export class CategoryProductsComponent {
             this.categoryName = category.categoryName;
           }
         }
+      } else {
+        console.log('No Category Found');
+      }
+    });
+
+    this.productService.getAllProducts().subscribe(response=>{
+      if (response.responcode == 0) {
+        this.products = response.data;
       } else {
         console.log('No Category Found');
       }

@@ -1,5 +1,6 @@
 package com.online.store.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productId;
 	private String productName;
+	@Column(length = 1000)
 	private String productDescription;
 	private Double unitPrice;
 	private Long quantity;
