@@ -8,14 +8,70 @@
                 </div>
                 <div class="panel-body">
                     <!--FORM ELEMENTS-->
-                    <form action="" class="form-horizontal">
+                    <form class="form-horizontal" [formGroup]="productForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label for="productName" class="control-label col-md-4">Enter Product Name: </label>
                             <div class="col-md-8">
-                                <input name="productName" id="productName" placeholder="Enter Product Name...." class="form-control">
-                                <!--<em class="help-block">Please Enter Product Name</em>-->
+                                <input formControlName="productName" name="productName" id="productName" placeholder="Enter Product Name...." class="form-control"> 
+                                <em class="help-block" *ngIf="productForm.controls['productName'].dirty && productForm.hasError('required','productName')">
+                                    Please Enter Product Name
+                                </em>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="unitPrice" class="control-label col-md-4">Enter Product Price: </label>
+                            <div class="col-md-8">
+                                <input formControlName="unitPrice" name="unitPrice" id="unitPrice" placeholder="Enter Product Price..." class="form-control" type="number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity" class="control-label col-md-4">Enter Product Quantity: </label>
+                            <div class="col-md-8">
+                                <input formControlName="quantity" name="quantity" id="quantity" placeholder="Enter Product Qauntity..." class="form-control" type="number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="categoryId" class="control-label col-md-4" >Select Product Category: </label>
+                            <div class="col-md-8">
+                                <select formControlName="categoryId" class="form-control" name="categoryId" id="categoryId"  >
+                                    <option value="">Choose Category...</option>
+                                    <option value="1">Mobiles</option>
+                                    <option value="2">Laptops</option>
+                                </select>
+                                <em class="help-block" *ngIf="productForm.controls['categoryId'].dirty && productForm.hasError('required','categoryId')">
+                                    Please Select Product Category
+                                </em>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productImage" class="control-label col-md-4">Upload Product Image: </label>
+                            <div class="col-md-8">
+                                <input formControlName="productImage" name="productImage" id="productImage" placeholder="Upload File" class="form-control" (change)="onFileChange($event)" type="file" accept=".jpg, .jpeg, .png">
+                            </div>
+                            <!--<em class="help-block" *ngIf="productForm.controls['productImage'].dirty && productForm.hasError('required','productImage')">
+                                Please Select Product Image
+                            </em>-->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productDescription" class="control-label col-md-4">Enter Product Description: </label>
+                            <div class="col-md-8">
+                                <textarea formControlName="productDescription" name="productDescription" id="productDescription" placeholder="Enter Product Description...." class="form-control" cols="8" rows="8"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <div class="col-md-offset-4 col-md-8">
+                               <input type="submit" name="submit" value="Save Product" class="btn btn-primary" [disabled]="productForm.invalid">
+                            </div>
+                        </div>
+
+
                     </form>
                     <!--FORM ELEMENTS-->
                 </div>

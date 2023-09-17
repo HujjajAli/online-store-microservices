@@ -228,6 +228,10 @@ input:checked + .slider:before {
 	height : 180px;
 }
 
+input.ng-invalid.ng-touched{
+  border-color: red;
+}
+
 /*
 .se-pre-con{
 		position:fixed;

@@ -16,6 +16,8 @@ import com.online.store.model.Category;
 import com.online.store.repository.CategoryRepository;
 import com.online.store.service.CategoryService;
 
+import static com.online.store.util.Util.getResponseFormat;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 	
@@ -36,17 +38,10 @@ public class CategoryServiceImpl implements CategoryService {
 				data.add(categoryDTO);
 			}
 			
-			map.put("responcode", 0);
-			map.put("message", "Found");
-			map.put("data", data);
-			response = ResponseEntity.status(HttpStatus.OK).body(map);
+			response = getResponseFormat(HttpStatus.OK, "Record Found", data);
 		}catch (Exception e) {
 			e.printStackTrace();
-			e.printStackTrace();
-			map.put("responcode", 1);
-			map.put("message", e.getMessage());
-			map.put("data", null);
-			response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
+			response = getResponseFormat(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
 		}
 		return response;
 	}
@@ -70,18 +65,10 @@ public class CategoryServiceImpl implements CategoryService {
 				
 				data.add(categoryDTO);
 			}
-			
-			map.put("responcode", 0);
-			map.put("message", "Found");
-			map.put("data", data);
-			response = ResponseEntity.status(HttpStatus.OK).body(map);
+			response = getResponseFormat(HttpStatus.OK, "Record Found", data);
 		}catch (Exception e) {
 			e.printStackTrace();
-			e.printStackTrace();
-			map.put("responcode", 1);
-			map.put("message", e.getMessage());
-			map.put("data", null);
-			response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
+			response = getResponseFormat(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
 		}
 		return response;
 	}
@@ -96,17 +83,12 @@ public class CategoryServiceImpl implements CategoryService {
 			BeanUtils.copyProperties(categoryDTO, category);
 			
 			categoryRepository.save(category);
+			categoryDTO.setCategoryId(category.getCategoryId());
+			response = getResponseFormat(HttpStatus.OK, "Record Found", categoryDTO);
 			
-			map.put("responcode", 0);
-			map.put("message", "Category Saved Successfully");
-			map.put("data", category);
-			response = ResponseEntity.ok(map);
 		}catch (Exception e) {
 			e.printStackTrace();
-			map.put("responcode", 1);
-			map.put("message", e.getMessage());
-			map.put("data", null);
-			response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
+			response = getResponseFormat(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
 		}
 		return response;
 	}

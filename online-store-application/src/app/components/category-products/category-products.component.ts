@@ -21,7 +21,7 @@ export class CategoryProductsComponent {
     let categoryId = this.route.snapshot.queryParamMap.get('categoryId');
     console.log('Category Id: ' + categoryId)
     this.productService.getAllCategoriesWithActiveClass(categoryId).subscribe(response => {
-      if (response.responcode == 0) {
+      if (response.responsecode == 0) {
         this.categories = response.data;
         for(let category of this.categories){
           if(category.activeClass != null && category.activeClass === 'active'){
@@ -33,8 +33,8 @@ export class CategoryProductsComponent {
       }
     });
 
-    this.productService.getAllProducts().subscribe(response=>{
-      if (response.responcode == 0) {
+    this.productService.getAllProductsByCategory(categoryId).subscribe(response=>{
+      if (response.responsecode == 0) {
         this.products = response.data;
       } else {
         console.log('No Category Found');

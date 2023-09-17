@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { MyProductsComponent } from './components/my-products/my-products.compon
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryProductsComponent } from './components/category-products/category-products.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr'
 
 @NgModule({
   declarations: [
@@ -27,8 +30,14 @@ import { AddProductComponent } from './components/add-product/add-product.compon
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,11 +11,15 @@ export class HomeComponent {
    categories: any[] = [];
    products: any[] = [];
 
+   
+
   constructor(private productService:ProductService){}
 
   ngOnInit() {
     this.productService.getAllCategories().subscribe(response=>{
-      if (response.responcode == 0) {
+      console.log('api response')
+      console.log(response)
+      if (response.responsecode == 0) {
         this.categories = response.data;
       } else {
         console.log('No Category Found');
@@ -23,7 +27,9 @@ export class HomeComponent {
     });
 
     this.productService.getAllProducts().subscribe(response=>{
-      if (response.responcode == 0) {
+      console.log('api response')
+      console.log(response)
+      if (response.responsecode == 0) {
         this.products = response.data;
       } else {
         console.log('No Category Found');
