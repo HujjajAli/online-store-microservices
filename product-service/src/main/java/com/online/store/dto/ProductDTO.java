@@ -20,5 +20,7 @@ public class ProductDTO {
 	private Boolean isActive;
 	private Long    purchases;
 	private Long    categoryId;
+	private Long    pviews;
+	private CategoryDTO category;
 
 }

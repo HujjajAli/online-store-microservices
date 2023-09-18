@@ -3,6 +3,7 @@ package com.online.store.model;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,12 +33,13 @@ public class Product {
 	private Long    quantity;
 	private Boolean isActive;
 	private Long    purchases;
+	private Long    pviews;
 	@Lob
 	@Basic
 	@Type(type="org.hibernate.type.BinaryType")
 	private byte[]  productImage;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
 

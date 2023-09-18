@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoryProductsComponent } from './components/category-products/category-products.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr'
+import { ToastrModule } from 'ngx-toastr';
+import { SingleProductComponent } from './components/single-product/single-product.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ToastrModule } from 'ngx-toastr'
     AboutUsComponent,
     MyProductsComponent,
     CategoryProductsComponent,
-    AddProductComponent
+    AddProductComponent,
+    SingleProductComponent
   ],
   imports: [
     BrowserModule,

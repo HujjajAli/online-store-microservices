@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="/home">Home</a></li>
+                    <li class="active"><a href="/category-products?categoryId={{product.category.categoryId}}">{{product.category.categoryName}}</a></li>
+                    <li class="active">{{product.productName}}</li>
+                </ol>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <!--Display Product Image-->
+        <div class="col-xs-12 col-sm-4">
+            <div class="thumbnail">
+                <img [src]="product.productImage" class="img img-responsive" />
+            </div>
+        </div>
+        <!--Display Product Description-->
+        <div class="col-xs-12 col-sm-8">
+            <h3>{{product.productName}}</h3>
+            <hr/>
+
+            <p>{{product.productDescription}}</p>
+            <hr/>
+
+            <h4>Price <strong>Rs. {{product.unitPrice}}</strong></h4>
+            <hr/>
+
+            <h6>Qty. Available: {{product.quantity}} | Views: {{product.pviews}}</h6>
+
+            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</a>
+        </div>
+    </div>
+
+</div>

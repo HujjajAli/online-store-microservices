@@ -34,12 +34,24 @@ public class ProductController {
 		return response;
 	}
 	
-	@GetMapping("/{categoryId}")
+	@GetMapping("categoryId/{categoryId}")
 	public ResponseEntity<?> getAllProductsByCategoryId(@PathVariable("categoryId")Long categoryId){
 		ResponseEntity<?> response = null;
 		try {
 			System.out.println("Getting All Products By Category");
 			response = productService.getAllProductsByCategoryId(categoryId);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return response;
+	}
+	
+	@GetMapping("productId/{productId}")
+	public ResponseEntity<?> getProductsByProductId(@PathVariable("productId")Long productId){
+		ResponseEntity<?> response = null;
+		try {
+			System.out.println("Getting Product By Product ID: "+productId);
+			response = productService.getAllProductByProductId(productId);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -24,8 +24,13 @@ export class ProductService {
   public getAllProducts(){
     return this.httpService.get('http://localhost:8082/product');
   }
+
+  public getAllProductByProductId(productId:any){
+    return this.httpService.get('http://localhost:8082/product/productId/'+productId);
+  }
+
   public getAllProductsByCategory(categoryId:any){
-    return this.httpService.get('http://localhost:8082/product/'+categoryId);
+    return this.httpService.get('http://localhost:8082/product/categoryId/'+categoryId);
   }
 
   public saveProduct(payload:any){

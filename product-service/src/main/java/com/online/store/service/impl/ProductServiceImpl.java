@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
+import com.online.store.dto.CategoryDTO;
 import com.online.store.dto.ProductDTO;
 import com.online.store.model.Category;
 import com.online.store.model.Product;
@@ -30,6 +30,37 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository productRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	
+	@Override
+	public ResponseEntity<?> getAllProductByProductId(Long productId) {
+		ResponseEntity response = null;
+		Map<String,Object> map = new HashMap<String,Object>();
+		try {
+			
+			ProductDTO productDTO = new ProductDTO();
+			Optional<Product> fetchData = productRepository.findById(productId);
+			if(fetchData.isPresent()) {
+				BeanUtils.copyProperties(fetchData.get(),productDTO);
+				String fileData = new String(fetchData.get().getProductImage());
+				productDTO.setProductImage(fileData);
+				productDTO.setCategoryId(fetchData.get().getCategory().getCategoryId());
+				CategoryDTO categoryDTO = new CategoryDTO();
+				BeanUtils.copyProperties(fetchData.get().getCategory(), categoryDTO);
+				productDTO.setCategory(categoryDTO);
+				response = getResponseFormat(HttpStatus.OK, "Record Found", productDTO);
+				long views = fetchData.get().getPviews() + 1;
+				fetchData.get().setPviews(views);
+				productRepository.save(fetchData.get());
+			}else {
+				response = getResponseFormat(HttpStatus.OK, "No Record", null);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			response = getResponseFormat(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+		}
+		return response;
+	}
 	
 	@Override
 	public ResponseEntity<?> getAllProducts() {
@@ -110,6 +141,7 @@ public class ProductServiceImpl implements ProductService {
 			byte[] imageBytes = productDTO.getProductImage().getBytes();
 			product.setProductImage(imageBytes);
 			product.setIsActive(true);
+			product.setPviews(0L);
 			
 			Optional<Category> category = categoryRepository.findById(productDTO.getCategoryId());
 			if(category.isPresent()){
@@ -127,7 +159,4 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return response;
 	}
-
-
-
 }
