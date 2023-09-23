@@ -21,7 +21,7 @@ export class AddProductComponent {
       productName:  ['',Validators.required],
       unitPrice:    [0,Validators.required],
       quantity:     [0,Validators.required],
-      categoryId:   ['',Validators.required],
+      categoryId:   ['0',Validators.required],
       productImage: [null,Validators.required],
       productDescription: ['']
     });

@@ -7,6 +7,7 @@ import { MyProductsComponent } from './components/my-products/my-products.compon
 import { CategoryProductsComponent } from './components/category-products/category-products.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
+import { UserRegisterationComponent } from './components/user-registeration/user-registeration.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
     path:'product',
     component:SingleProductComponent
 
+  },
+  {
+    path:'sign-up',
+    component:UserRegisterationComponent
   }
 ];
 

@@ -1,0 +1,256 @@
+<div class="container">
+    <div class="row" *ngIf="personalInfoForm || addressForm">
+        <div class="col-md-offset-2 col-md-8">
+            <form [formGroup]="userRegistrationForm" (ngSubmit)="onSubmit()">
+                <div class="panel panel-primary" *ngIf="personalInfoForm">
+                    <div class="panel-heading">
+                        <h4>Sign Up - Personal</h4>
+                    </div>
+                    <div class="panel-body">
+                        <!--FORM ELEMENTS-->
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="firstName" class="control-label col-md-4">First Name: </label>
+                                <div class="col-md-8">
+                                    <input formControlName="firstName" name="firstName" id="firstName"
+                                        placeholder="Enter Your First Name...." class="form-control">
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['firstName'].dirty && userRegistrationForm.hasError('required','firstName')">
+                                        Please Enter Your First Name!
+                                    </em>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName" class="control-label col-md-4">Last Name: </label>
+                                <div class="col-md-8">
+                                    <input formControlName="lastName" name="lastName" id="lastName"
+                                        placeholder="Enter Your Last Name...." class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="control-label col-md-4">Email Adress: </label>
+                                <div class="col-md-8">
+                                    <input type="email" formControlName="email" name="email" id="email"
+                                        placeholder="Enter Your Email Address...." class="form-control">
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['email'].dirty && userRegistrationForm.hasError('email','email')">
+                                        Please Enter Valid Email Address!
+                                    </em>
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['email'].dirty && userRegistrationForm.hasError('required','email')">
+                                        Please Enter Your Email Address!
+                                    </em>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact" class="control-label col-md-4">Contact Number: </label>
+                                <div class="col-md-8">
+                                    <input formControlName="contact" name="contact" id="contact"
+                                        placeholder="Enter Your Contact Number...." class="form-control">
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['contact'].dirty && userRegistrationForm.hasError('required','contact')">
+                                        Please Enter Your Contact Number!
+                                    </em>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="control-label col-md-4">Password: </label>
+                                <div class="col-md-8">
+                                    <input type="password" formControlName="password" name="password" id="password"
+                                        placeholder="Enter Password...." class="form-control">
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['password'].dirty && userRegistrationForm.hasError('required','password')">
+                                        Please Create a Password!
+                                    </em>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="conPassword" class="control-label col-md-4">Cconfirm Password: </label>
+                                <div class="col-md-8">
+                                    <input type="password" formControlName="conPassword" name="conPassword"
+                                        id="conPassword" placeholder="Enter Confirm Password...." class="form-control">
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['conPassword'].dirty && userRegistrationForm.hasError('required','conPassword')">
+                                        Please Enter Confirm Password
+                                    </em>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="control-label col-md-4">Select User Role: </label>
+                                <div class="col-md-8">
+                                    <label for="userRole1" class="radio-inline">
+                                        <input type="radio" value="1" formControlName="userRole" name="userRole" id="userRole1">Customer
+                                    </label>
+                                    <label for="userRole2" class="radio-inline">
+                                        <input type="radio" value="2" formControlName="userRole" name="userRole" id="userRole2">Supplier
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <button (click)="personalInfoFormSubmit()" type="submit" class="btn btn-primary"
+                                        [disabled]="userRegistrationForm.invalid">NEXT - ADDRESS
+                                        <strong>&#62;</strong></button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Address Form-->
+                <div class="panel panel-primary" *ngIf="addressForm">
+                    <div class="panel-heading">
+                        <h4>Sign Up - Address</h4>
+                    </div>
+                    <div class="panel-body">
+                        <!--FORM ELEMENTS-->
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="street" class="control-label col-md-4">Street Name: </label>
+                                <div class="col-md-8">
+                                    <input formControlName="street" name="street" id="street"
+                                        placeholder="Enter Street Name...." class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="province" class="control-label col-md-4">Select Province: </label>
+                                <div class="col-md-8">
+                                    <select formControlName="province" class="form-control" name="province"
+                                        id="province" (change)="onProvinceChange($event)">
+                                        <option value="0">Choose Province...</option>
+                                        <option *ngFor="let province of provinces" [value]="province.provinceId">
+                                            {{province.provinceName}}</option>
+                                    </select>
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['province'].dirty && userRegistrationForm.hasError('required','province')">
+                                        Please Select Product Category
+                                    </em>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city" class="control-label col-md-4">Select City: </label>
+                                <div class="col-md-8">
+                                    <select formControlName="city" class="form-control" name="city" id="city">
+                                        <option value="0">Choose City...</option>
+                                        <option *ngFor="let city of cities" [value]="city.cityId">{{city.cityName}}
+                                        </option>
+                                    </select>
+                                    <em class="help-block"
+                                        *ngIf="userRegistrationForm.controls['city'].dirty && userRegistrationForm.hasError('required','city')">
+                                        Please Select Product Category
+                                    </em>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postalCode" class="control-label col-md-4">Postal Code: </label>
+                                <div class="col-md-8">
+                                    <input formControlName="postalCode" name="postalCode" id="postalCode"
+                                        placeholder="Enter Your Area Postal Code...." class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country" class="control-label col-md-4">Select Country: </label>
+                                <div class="col-md-8">
+                                    <select formControlName="country" class="form-control" name="country" id="country"
+                                        [disabled]="true">
+                                        <option value="1">Pakistan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <button (click)="addressFormBackSubmit()" type="submit" class="btn btn-primary"
+                                        [disabled]="userRegistrationForm.invalid"><strong>&#60;</strong> BACK -
+                                        PERSONAL</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!--Confirm Details Page-->
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+					<h4>Personal Details</h4>
+				</div>
+                <div class="panel-body">
+                    <div class="text-center">
+                        <h3>Name : <strong>some name</strong></h3>
+						<h4>Email : <strong>some email</strong></h4>
+						<h4>Contact : <strong>Some Contact</strong></h4>
+						<h4>Role : <strong>Some Role</strong></h4>
+                        <p>
+							<button class="btn btn-primary">Edit</button>
+						</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+		
+			<div class="panel panel-primary">
+				
+				<div class="panel-heading">
+					<h4>Shipping Address</h4>
+				</div>
+			
+				<div class="panel-body">
+					<div class="text-center">
+                        
+						<p>some address line</p>
+						<p>some city -  some postal code </p>
+						<p>some province</p>
+						<p>some country</p>
+						<p><br/> </p>
+                        <p>
+							<button  class="btn btn-primary">Edit</button>
+						</p>
+					</div>
+				</div>
+			
+			</div>
+		
+		</div>
+        <!--Confirm Details Page-->
+
+    </div>
+
+    <div class="row">
+		
+		<div class="col-sm-4 col-sm-offset-4">
+			
+			<div class="text-center">
+				<button class="btn btn-lg btn-success">Confirm</button>
+			</div>
+			
+		</div>
+		
+	</div>
+
+
+
+
+</div>

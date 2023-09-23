@@ -15,7 +15,8 @@ import { CategoryProductsComponent } from './components/category-products/catego
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { SingleProductComponent } from './components/single-product/single-product.component'
+import { SingleProductComponent } from './components/single-product/single-product.component';
+import { UserRegisterationComponent } from './components/user-registeration/user-registeration.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SingleProductComponent } from './components/single-product/single-produ
     MyProductsComponent,
     CategoryProductsComponent,
     AddProductComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    UserRegisterationComponent
   ],
   imports: [
     BrowserModule,

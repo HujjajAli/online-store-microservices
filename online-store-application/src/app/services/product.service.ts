@@ -11,7 +11,7 @@ import {throwError } from 'rxjs';
 })
 export class ProductService {
 
-  constructor(private httpService:HttpService,private toastrService:ToastrService) { }
+  constructor(private httpService:HttpService) { }
 
   public getAllCategories(){
     return this.httpService.get('http://localhost:8082/category');
